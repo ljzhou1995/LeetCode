@@ -1,2 +1,3 @@
-# LeetCode.Python3
-Personal LeetCode.Python3 Solutions
+# LeetCode
+Personal LeetCode Solutions
+Using by Python3/MySQL
