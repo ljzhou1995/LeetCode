@@ -1,12 +1,11 @@
 # Write your MySQL query statement below
-SELECT DISTINCT s.id, s.date, s.people
-FROM stadium s, 
+SELECT DISTINCT s1.*
+FROM stadium s1, stadium s2, stadium s3
+WHERE s1.people >= 100 AND s2.people >= 100 AND s3.people>=100 AND
         (
-        SELECT a.id FROM_ID, a.id+2 TO_ID
-        FROM stadium a, stadium b, stadium c
-        WHERE a.id+1 = b.id
-        AND b.id+1 = c.id
-        AND a.people >= 100
-        AND b.people >= 100
-        AND c.people >= 100) b
-WHERE s.id BETWEEN b.FROM_ID AND b.TO_ID
+            (s2.id-1=s1.id AND s3.id-1=s2.id AND s3.id-2=s1.id) OR
+            (s3.id-1=s1.id AND s1.id-1=s2.id AND s3.id-2=s2.id) OR
+            (s2.id-1=s1.id AND s1.id-1=s3.id AND s2.id-2=s3.id) OR
+            (S1.id-1=s2.id AND s2.id-1=s3.id AND s1.id-2=s3.id)
+        )
+ORDER BY id 
